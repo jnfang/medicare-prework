@@ -23,8 +23,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, d
    * a path of `/`.
    */
   def index() = Action.async {
-    val schemaFileName = "/Users/jfang/Dropbox/Career/Take homes/nava-medicare/app/schemas/booleanmeasures.csv"
-    val dataFileName = "/Users/jfang/Dropbox/Career/Take homes/nava-medicare/app/data/booleanmeasures.txt"
+    val schemaFileName = "app/schemas/booleanmeasures.csv"
+    val dataFileName = "app/data/booleanmeasures.txt"
     val schemas = SchemaReader.readFromFile(schemaFileName)
     val dataAsJson = DataReader.fromFileToJson(dataFileName, schemas)
     Future.sequence(dr.sendRequests(dataAsJson)).map {
