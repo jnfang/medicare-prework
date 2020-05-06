@@ -25,17 +25,6 @@ class DataReader @Inject()(ws: WSClient)(implicit ec: ExecutionContext) {
         result
     }
   }
-
-  /* Async retrier
-  TODO: Add module binding for Akka Scheduler
-  def retryRequest[T](responseFuture: => Future[T], delay:FiniteDuration = FiniteDuration(1, "seconds"), retries: Int = 5)(implicit s: Scheduler): Future[T] = {
-    responseFuture.recoverWith {
-      case NonFatal(_) if retries > 0 =>
-        val nextDelay = FiniteDuration(Math.ceil(delay.length*2).toInt, delay.unit)
-        after(delay, s)(retryRequest(responseFuture, nextDelay, retries - 1))
-    }
-  }
-  */
 }
 
 object DataReader {
